@@ -9,19 +9,30 @@ const Main = props => {
     <div className="container">
       <Switch>
         <Route exact path="/" render={props => <Homepage {...props} />} />
-        <Route 
-          exact path="/signin" 
+        <Route
+          exact
+          path="/signin"
           render={props => {
             return (
-              <AuthForm buttonText="Log in" heading="Welcome Back." {...props} />
+              <AuthForm
+                buttonText="Log in"
+                heading="Welcome Back."
+                {...props}
+              />
             );
-          }} 
+          }}
         />
-        <Route 
-          exact path="/signup"
+        <Route
+          exact
+          path="/signup"
           render={props => {
-            return(
-              <AuthForm buttonText="Sign me up!" heading="Join Warbler today." {...props} />
+            return (
+              <AuthForm
+                buttonText="Sign me up!"
+                signUp
+                heading="Join Warbler today."
+                {...props}
+              />
             );
           }}
         />
@@ -31,9 +42,9 @@ const Main = props => {
 };
 
 function mapStateToProps(state) {
-  return{
+  return {
     currentUser: state.currentUser
   };
 }
- 
+
 export default withRouter(connect(mapStateToProps)(Main)); //the withRouter will help us to get the props from the router to the component
