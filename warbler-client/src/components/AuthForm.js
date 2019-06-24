@@ -18,6 +18,14 @@ export default class AuthForm extends Component {
     });
   };
 
+  handleSubmit = e => {
+    e.preventDefault();
+    const authType = this.props.signUp ? "signup" : "signin";
+    this.props.onAuth(authType, this.state).then(() => {
+      console.log("LOGGED IN SUCCESSFULLY!");
+    });
+  };
+
   render() {
     const { email, username, password, profileImageUrl } = this.state;
     const { heading, buttonText, signUp } = this.props;
@@ -29,6 +37,7 @@ export default class AuthForm extends Component {
               <h2>{heading}</h2>
               <label htmlFor="email" />
               <input
+                autoComplete="off"
                 className="form-control"
                 id="email"
                 name="email"
@@ -39,6 +48,8 @@ export default class AuthForm extends Component {
               />
               <label htmlFor="password" />
               <input
+                value={password}
+                autoComplete="off"
                 className="form-control"
                 id="password"
                 name="password"
@@ -50,6 +61,7 @@ export default class AuthForm extends Component {
                 <div>
                   <label htmlFor="username" />
                   <input
+                    autoComplete="off"
                     className="form-control"
                     id="username"
                     name="username"
@@ -60,6 +72,7 @@ export default class AuthForm extends Component {
                   />
                   <label htmlFor="image-url" />
                   <input
+                    autoComplete="off"
                     className="form-control"
                     id="image-url"
                     name="profileImageUrl"
@@ -70,6 +83,12 @@ export default class AuthForm extends Component {
                   />
                 </div>
               )}
+              <button
+                type="submit"
+                className="btn btn-primary btn-block btn-lg"
+              >
+                {buttonText}
+              </button>
             </form>
           </div>
         </div>
