@@ -4,9 +4,10 @@ import { connect } from "react-redux";
 import Homepage from "../components/Homepage";
 import AuthForm from "../components/AuthForm";
 import { authUser } from "../store/actions/auth";
+import { removeError } from "../store/actions/errors";
 
 const Main = props => {
-  const { authUser } = props;
+  const { authUser, errors, removeError } = props;
   return (
     <div className="container">
       <Switch>
@@ -17,6 +18,8 @@ const Main = props => {
           render={props => {
             return (
               <AuthForm
+                removeError={removeError}
+                errors={errors}
                 onAuth={authUser}
                 buttonText="Log in"
                 heading="Welcome Back."
@@ -31,6 +34,8 @@ const Main = props => {
           render={props => {
             return (
               <AuthForm
+                removeError={removeError}
+                errors={errors}
                 onAuth={authUser}
                 buttonText="Sign me up!"
                 signUp
@@ -47,6 +52,7 @@ const Main = props => {
 
 function mapStateToProps(state) {
   return {
+    currentUser: state.currentUser,
     errors: state.errors
   };
 }
@@ -54,6 +60,6 @@ function mapStateToProps(state) {
 export default withRouter(
   connect(
     mapStateToProps,
-    { authUser }
+    { authUser, removeError }
   )(Main)
 ); //the withRouter will help us to get the props from the router to the component
