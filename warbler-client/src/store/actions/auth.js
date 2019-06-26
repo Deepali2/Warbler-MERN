@@ -10,6 +10,13 @@ export function setCurrentUser(user) {
   };
 }
 
+export function logout() {
+  return dispatch => {
+    localStorage.clear();
+    dispatch(setCurrentUser({})); //the process of logout is to simply call setCurrentUser with an empty object
+  };
+}
+
 export function authUser(type, userData) {
   // type will be sign up or sign in
   return dispatch => {
