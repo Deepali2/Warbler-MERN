@@ -16,7 +16,7 @@ const MessageItem = ({ date, profileImageUrl, text, username }) => (
       <div className="message-area">
         <Link to="/">@{username} &nbsp;</Link>
         <span className="text-muted">
-          <Moment className="text-muted" format="DD MMM YYY">
+          <Moment className="text-muted" format="MMM DD YYYY">
             {date}
           </Moment>
         </span>
