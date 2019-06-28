@@ -1,6 +1,5 @@
 //this component is used to login or sign up users
 import React, { Component } from "react";
-import { removeError } from "../store/actions/errors";
 
 export default class AuthForm extends Component {
   constructor(props) {
