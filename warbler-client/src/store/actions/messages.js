@@ -1,4 +1,4 @@
-import { apiCall } from "../services/api";
+import { apiCall } from "../../services/api";
 import { addError } from "./errors";
 import { LOAD_MESSAGES, REMOVE_MESSAGE } from "../actionTypes";
 
@@ -9,8 +9,12 @@ export const loadMessages = messages => ({
 
 export const fetchMessages = () => {
   return dispatch => {
-    return apiCall("GET", "/api/messages").then(res =>
-      dispatch(loadMessages(res)).catch(err => addError(err.message))
-    );
+    return apiCall("GET", "/api/messages")
+      .then(res => {
+        dispatch(loadMessages(res));
+      })
+      .catch(err => {
+        dispatch(addError(err.message));
+      });
   };
 };
