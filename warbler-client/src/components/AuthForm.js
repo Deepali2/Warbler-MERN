@@ -1,5 +1,6 @@
 //this component is used to login or sign up users
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 
 export default class AuthForm extends Component {
   constructor(props) {
@@ -115,3 +116,13 @@ export default class AuthForm extends Component {
     );
   }
 }
+
+AuthForm.propTypes = {
+  buttonText: PropTypes.string,
+  errors: PropTypes.object,
+  heading: PropTypes.string,
+  history: PropTypes.object,
+  onAuth: PropTypes.func,
+  signIn: PropTypes.bool,
+  removeError: PropTypes.func
+};

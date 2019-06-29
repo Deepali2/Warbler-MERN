@@ -9,8 +9,8 @@ class MessageForm extends Component {
       message: ""
     };
   }
-  handleNewMessage = e => {
-    e.preventDefault();
+  handleNewMessage = event => {
+    event.preventDefault();
     this.props.postNewMessage(this.state.message);
     this.setState({ message: "" });
     this.props.history.push("/");
@@ -28,7 +28,7 @@ class MessageForm extends Component {
           value={this.state.message}
           onChange={e => this.setState({ message: e.target.value })}
         />
-        <button type="submit" className="btn btn-success pull-right">
+        <button type="submit" className="btn btn-success">
           Add My Message
         </button>
       </form>

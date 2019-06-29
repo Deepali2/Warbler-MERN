@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { fetchMessages, removeMessage } from "../store/actions/messages";
 import MessageItem from "../components/MessageItem";
-import currentUser from "../store/reducers/currentUser";
 
 class MessageList extends Component {
   componentDidMount() {
@@ -17,8 +16,8 @@ class MessageList extends Component {
         text={m.text}
         username={m.user.username}
         profileImageUrl={m.user.profileImageUrl}
-        removeMessage={removeMessage.bind(this, m.user_id, m._id)}
-        isCurrentUser={currentUser === m.user._id}
+        removeMessage={removeMessage.bind(this, m.user._id, m._id)}
+        isCorrectUser={currentUser === m.user._id}
       />
     ));
     return (

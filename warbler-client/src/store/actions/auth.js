@@ -30,10 +30,10 @@ export function authUser(type, userData) {
       return apiCall("post", `/api/auth/${type}`, userData)
         .then(({ token, ...user }) => {
           localStorage.setItem("jwtToken", token);
-          setAuthorizationToken();
+          setAuthorizationToken(token);
           dispatch(setCurrentUser(user));
-          dispatch(removeError(token));
-          resolve();
+          dispatch(removeError());
+          resolve(); //indicate that the API call succeded
         })
         .catch(err => {
           dispatch(addError(err.message));
