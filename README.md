@@ -1,3 +1,5 @@
+## Getting Started:
+
 1. git clone the repository
 2. type `cd warbler-server`
 3. type `npm install` to install the server dependencies
